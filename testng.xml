@@ -5,9 +5,11 @@
 <listener class-name="com.vtiger.genericUtility.ListnersLibrary"/>
 </listeners>
 
+<!--
 <parameter name="browser" value="chrome"/>
 <parameter name="username" value="admin"/>
 <parameter name="password" value="admin"/>
+-->
 
   <test thread-count="5" name="Test">
     <classes>

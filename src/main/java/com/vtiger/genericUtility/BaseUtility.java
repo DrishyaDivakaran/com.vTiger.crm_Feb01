@@ -36,15 +36,17 @@ public class BaseUtility {
 		System.out.println("DB DisConnection Attempt");
 	}
 	
-	@Parameters("browser")
+	//@Parameters("browser")
 	@BeforeClass
-	public void openBrowser(String browser) {
+	public void openBrowser(/*String browser*/) throws IOException {
 		//String browserToOpen=System.getProperty("browser");
-		String browserToOpen=browser;
-		if(browserToOpen.contains("chrome")) {
+		
+		String browser = fLIB.readProperty("browser");
+		//String browserToOpen=browser;
+		if(browser.contains("chrome")) {
 			driver=new ChromeDriver();
 		}
-		else if (browserToOpen.contains("firefox")) {
+		else if (browser.contains("firefox")) {
 			driver=new FirefoxDriver();
 		}
 		else {
@@ -62,14 +64,20 @@ public class BaseUtility {
 	}
 	
 
-	@Parameters({"username","password"})
+	//@Parameters({"username","password"})
 	@BeforeMethod
-	public void loginProcess(String username, String password) throws IOException {
+	public void loginProcess(/*String username, String password*/) throws IOException {
+		String URL1=fLIB.readProperty("url");
 		driver.get(fLIB.readProperty("url"));
+		
 		wLIB.winWaitImplicity(driver, 5);
 		
 		LoginPage lp=new LoginPage(driver);
-		lp.loginLogic(username, password);
+		
+		String username1=fLIB.readProperty("username");
+		String password1=fLIB.readProperty("password");
+		
+		lp.loginLogic(username1, password1);
 		
 		System.out.println("Login Sucessfull");
 	}

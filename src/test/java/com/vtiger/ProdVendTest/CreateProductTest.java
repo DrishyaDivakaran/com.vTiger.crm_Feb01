@@ -14,19 +14,24 @@ public class CreateProductTest extends BaseUtility {
 	@Test
 	public void productCreateTest() throws IOException {
 		//Verify Homepage is displayed or not
+		
 		HomePage hp=new HomePage(driver);
 		String homepage = hp.getDispHomeText().getText();
-		System.out.println(homepage);		
+		System.out.println(homepage);
+		wLIB.winWaitImplicity(driver, 10);
 		Assert.assertEquals(homepage,hp.getActualHome());
 		
 		//Verify Product page is displayed or not
 		hp.getProdBtn().click();
+		wLIB.winWaitImplicity(driver, 10);
 		ProductPage pp=new ProductPage(driver);
 		String productspage=pp.getDispProductsText().getText();
+		
 		Assert.assertEquals(productspage,pp.getActualProductsPage());
 		
 		//Entering Product Data and saving it
 		pp.getAddBtn().click();
+		wLIB.winWaitImplicity(driver, 10);
 		pp.getTextBox().sendKeys(eLIB.readExcel("VTiger", 1, 5)+jLIB.randomNumbers());
 		pp.getSaveBtn().click();
 		

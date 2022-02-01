@@ -5,7 +5,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class LoginPage {
+import com.vtiger.genericUtility.BaseUtility;
+
+public class LoginPage extends BaseUtility {
 WebDriver localDriver;
 	
 	public LoginPage(WebDriver driver) {
@@ -37,6 +39,7 @@ WebDriver localDriver;
 	public void loginLogic(String username, String password) {
 	getUserName().sendKeys(username);	
 	getPassWord().sendKeys(password);	
+		
 	getLogInBtn().click();
 	
 	System.out.println("Login Attemp Done");
