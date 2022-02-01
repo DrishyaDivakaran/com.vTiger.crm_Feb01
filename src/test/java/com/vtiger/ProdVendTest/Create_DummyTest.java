@@ -9,4 +9,9 @@ public class Create_DummyTest {
 		System.out.println("Hello commited Return");
 	}
 	
+	@Test
+	public void testingOne() {
+		System.out.println("Hello commited Return-1");
+	}
+	
 }
